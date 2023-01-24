@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates id="template" xml:space="preserve">
+<!--    t-name="NotificationsDataListView.Buttons"-->
+    <t t-extend="ListView.buttons">
+        <t t-jquery="button.o_list_button_add" t-operation="before">
+            <button t-if="widget.modelName == 'fleet.vehicle'" type="button" class="btn btn-secondary oe_send_notifications">Send Notifications</button>
+        </t>
+    </t>
+
+</templates>

@@ -1,0 +1,46 @@
+{
+	"info": {
+		"_postman_id": "e9974b95-6771-4c03-8baa-35191140ebd9",
+		"name": "Delivery Fleet Orders Management",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4511654"
+	},
+	"item": [
+		{
+			"name": "All Orders",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/stock.picking?filter=[[\"partner_id\", \"=\", 14]]",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"stock.picking"
+					],
+					"query": [
+						{
+							"key": "page_size",
+							"value": "10",
+							"disabled": true
+						},
+						{
+							"key": "filter",
+							"value": "[[\"partner_id\", \"=\", 14],[\"scheduled_date\", \">=\", \"2023-1-23\"],[\"scheduled_date\", \"<=\", \"2023-1-25\"]]",
+							"description": "Enable For Filter With Date Range",
+							"disabled": true
+						},
+						{
+							"key": "filter",
+							"value": "[[\"partner_id\", \"=\", 14]]",
+							"description": "Enable For Filter WithOut Date Range"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

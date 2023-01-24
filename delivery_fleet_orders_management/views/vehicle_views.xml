@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <record model="ir.ui.view" id="fleet_search">
+        <field name="name">real_estate society_search</field>
+        <field name="model">fleet.vehicle</field>
+        <field name="inherit_id" ref="fleet.fleet_vehicle_view_search"/>
+        <field name="arch" type="xml">
+            <search>
+                <filter string="Futures Orders" name="futures_orders" domain="[('driver_id', '=',1)]"/>
+                <filter string="Today Orders" name="today_orders" domain="[('driver_id', '=',1)]"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="fleet_vehicle_orders_button" model="ir.ui.view">
+        <field name="name">fleet.vehicle.orders.button</field>
+        <field name="model">fleet.vehicle</field>
+        <field name="inherit_id" ref="fleet.fleet_vehicle_view_form" />
+        <field name="arch" type="xml">
+            <div name="button_box" position="inside">
+                <button class="oe_stat_button" type="object" name="get_orders"
+                        icon="fa-truck">
+                    <field string="Orders" name="orders_count" widget="statinfo"/>
+                </button>
+                <button class="oe_stat_button" type="object" name="get_future_orders"
+                        icon="fa-truck">
+                    <field string="Future Orders" name="future_orders_count" widget="statinfo"/>
+                </button>
+            </div>
+        </field>
+    </record>
+
+</odoo>
