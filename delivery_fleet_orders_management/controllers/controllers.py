@@ -20,32 +20,6 @@ _logger = logging.getLogger(__name__)
 
 class IrHttp(models.AbstractModel):
     _inherit = "ir.http"
-    # def init(cls):
-    #     print("swwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww")
-    #     print(request)
-    #     if not request.httprequest:
-    #         print("sssss")
-    #         response = request.jsonrequest
-    #         # check if api is admin then goo else check token
-    #         login_check = response.get('params')['db']
-    #         if login_check:
-    #             login_name = response.get('params')['login']
-    #             rand_token = uuid4()
-    #             user = cls.env['res.users'].sudo().search([('login', '=', login_name)], limit=1)
-    #             user.update({
-    #                 'user_token_api' : rand_token
-    #             })
-    #         else:
-    #             print("sa")
-    #             token = response.get('params')['token']
-    #             user = cls.env['res.users'].sudo().search([('user_token_api', '=', token)], limit=1)
-    #             if not user:
-    #                 raise exceptions.AccessDenied(message='UnAuthorize')
-
-
-
-
-
 def error_response(error, msg):
     return {
         "jsonrpc": "2.0",
@@ -138,8 +112,6 @@ class OdooAPI(http.Controller):
             raise exceptions.AccessDenied(message='UnAuthorize')
         args = []
         kwargs = {}
-        _logger.debug("wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwIT IS fffffffffffffff")
-        _logger.debug(post)
         if "args" in post:
             args = post["args"]
         if "kwargs" in post:
@@ -303,7 +275,6 @@ class OdooAPI(http.Controller):
             records = request.env[model].sudo().search([])
             for record in records:
                 _logger.debug(record)
-                _logger.debug("dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd")
         except KeyError as e:
             msg = "The model `%s` does not exist." % model
             res = error_response(e, msg)
@@ -329,9 +300,7 @@ class OdooAPI(http.Controller):
 
             filters = json.loads(params["filter"])
             print(filters)
-            _logger.debug("wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwIT IS fffffffffffffff")
             _logger.debug(filters)
-            _logger.debug("ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt IS fffffffffffffff")
 
             records = request.env[model].sudo().search(filters, order=orders)
             print(records)

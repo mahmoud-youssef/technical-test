@@ -8,8 +8,6 @@ from odoo.tools import pdf
 class Drivers(models.Model):
     _inherit = 'res.partner'
     is_driver = fields.Boolean(string="Is Driver?", help="Is Driver?", default=False)
-    # vehicle_id = fields.Many2many('fleet.vehicle', 'fleet_vehicle_rel', 'vehicle_id', 'driver_id',
-    #                               'Vehicles')
     vehicle_id = fields.One2many('fleet.vehicle','driver_id','Vehicles')
 
     delivery_orders = fields.One2many('stock.picking','partner_id',

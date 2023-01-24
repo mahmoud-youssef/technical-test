@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': "Delivery Fleet Orders Management",
-    'author': "Delivery Fleet Orders Management",
+    'author': "Mahmoud El-Badry",
     'summary': """
         Delivery Fleet Orders Management""",
     'description': """
@@ -14,18 +14,12 @@
         'views/drivers_views.xml',
         'views/vehicle_views.xml',
     ],
-    # 'web.assets_backend': [
-    #     'static/src/js/vehicle.js',
-    # ],
-    # 'web.assets_qweb': [
-    #     'static/src/xml/pos.xml',
-    # ],
     'assets': {
         'web.assets_backend': [
             'delivery_fleet_orders_management/static/src/js/vehicle.js',
         ],
         'web.assets_qweb': [
-            'delivery_fleet_orders_management/static/src/xml/pos.xml',
+            'delivery_fleet_orders_management/static/src/xml/vehicle_button.xml',
         ],
     },
 }

@@ -10,8 +10,6 @@ from odoo.exceptions import ValidationError
 
 class Vehicles(models.Model):
     _inherit = 'fleet.vehicle'
-    # partner_id = fields.Many2many('res.partner', 'res_partner_rel', 'partner_id', 'vehicle_id',
-    #                               'Drivers')
 
     orders_count = fields.Integer(compute='compute_count')
     future_orders_count = fields.Integer(compute='future_orders_counts')
@@ -50,11 +48,7 @@ class Vehicles(models.Model):
 
     @api.model
     def odoo_button_click_send_notifications(self):
-        print("SDsdsd")
-        # pending_orders = self.env['stock.picking'].search(
-        #     [('partner_id', '=', False), ('scheduled_date', '>=', datetime.today())])
         drivers = self.env['res.partner'].search([('is_driver', '=', True)])
-        print(drivers)
         data = self.env['mail.message'].create({
             'message_type': "notification",
             'body': "Please Take a Order From Pending Order",
@@ -64,5 +58,4 @@ class Vehicles(models.Model):
             'res_id': self.id,
             'author_id': self.env.user.partner_id and self.env.user.partner_id.id
         })
-        print(data)
         return True
