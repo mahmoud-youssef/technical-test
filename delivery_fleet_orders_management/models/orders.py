@@ -24,7 +24,8 @@ class Orders(models.Model):
         if picking_type_id:
             picking_type = self.env['stock.picking.type'].browse(vals['picking_type_id'])
             date = datetime.today().strftime('%Y-%m-%d %H:%M:%S')
-            if picking_type.code == "outgoing" and vals['scheduled_date'] < date:
-                raise ValidationError('Scheduled Date/Picking Date must be >= today')
+            if 'scheduled_date' in vals:
+                if picking_type.code == "outgoing" and vals['scheduled_date'] < date:
+                    raise ValidationError('Scheduled Date/Picking Date must be >= today')
         records = super(Orders, self).create(vals)
         return records
