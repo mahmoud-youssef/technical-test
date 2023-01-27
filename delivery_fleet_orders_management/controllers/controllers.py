@@ -99,6 +99,10 @@ class OdooAPI(http.Controller):
             return "Invalid credentials."
         return user["result"]
 
+    @http.route('/drivers-path', type='http', auth='user', website=True)
+    def show_custom_webpage(self, **kw):
+        drivers = request.env['stock.picking'].search([])
+        return http.request.render('delivery_fleet_orders_management.website_drivers_path', {'drivers':drivers})
 
     @http.route(
         '/object/<string:model>/<string:function>',

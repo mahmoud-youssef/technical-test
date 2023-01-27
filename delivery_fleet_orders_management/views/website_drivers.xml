@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="delivery_fleet_orders_management.website_drivers_path'">
+            <t t-call="website.layout">
+                <t t-set="title">New page</t>
+                    <div class="oe_structure">
+                        <div class="container">
+                                              <table class="table table-sm o_main_table" name="delivery_orders_data">
+                              <thead>
+                                  <tr>
+                                      <th name="partner_id"><span>Driver Name</span></th>
+                                      <th name="state"><span>Path</span></th>
+                                  </tr>
+                              </thead>
+                              <tbody class="invoice_tbody">
+                                  <t t-set="current_subtotal" t-value="0"/>
+                                  <t t-set="lines" t-value="drivers"/>
+
+                                  <t t-foreach="lines" t-as="line">
+                                      <tr>
+                                          <td name="partner_id"><span t-field="line.partner_id.name"/></td>
+                                          <td name="state"><span t-field="line.state"/></td>
+                                      </tr>
+                                  </t>
+                              </tbody>
+                          </table>
+                        </div>
+                    </div>
+                </t>
+        </template>
+    </data>
+</odoo>
+ 
