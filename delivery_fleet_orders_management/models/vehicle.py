@@ -13,6 +13,8 @@ class Vehicles(models.Model):
 
     orders_count = fields.Integer(compute='compute_count')
     future_orders_count = fields.Integer(compute='future_orders_counts')
+    delivery_orders = fields.One2many('stock.picking', 'partner_id',
+                                      'Delivery Orders')
 
     def get_future_orders(self):
         self.ensure_one()

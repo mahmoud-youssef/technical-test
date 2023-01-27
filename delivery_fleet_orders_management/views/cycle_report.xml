@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- QWeb Reports -->
+        <record id="action_fleet_vehicle_qweb" model="ir.actions.report">
+            <field name="name">Fleet Vehicle Qweb</field>
+            <field name="model">fleet.vehicle</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">delivery_fleet_orders_management.report_fleet_vehicle</field>
+            <field name="report_file">delivery_fleet_orders_management.report_fleet_vehicle</field>
+            <field name="binding_model_id" ref="model_fleet_vehicle"/>
+            <field name="binding_type">report</field>
+        </record>
+
+        <!-- Exel Reports -->
+        <report
+            id="partner_xlsx"
+            model="fleet.vehicle"
+            string="Fleet Vehicle XLSX"
+            report_type="xlsx"
+            name="fleet.vehicle.report_fleet_vehicle_xlsx"
+            file="fleet_vehicle"
+            attachment_use="False"
+        />
+
+        <!-- Dashboard Reports-->
+        <record id="action_fleet_vehicle_html" model="ir.actions.report">
+            <field name="name">Fleet Vehicle Dashboard</field>
+            <field name="model">fleet.vehicle</field>
+            <field name="report_type">qweb-html</field>
+            <field name="binding_model_id" ref="model_fleet_vehicle"/>
+            <field name="report_name">delivery_fleet_orders_management.report_fleet_vehicle_html</field>
+            <field name="report_file">delivery_fleet_orders_management.report_fleet_vehicle_html</field>
+        </record>
+
+    </data>
+</odoo>

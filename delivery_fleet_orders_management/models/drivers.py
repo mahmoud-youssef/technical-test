@@ -12,6 +12,8 @@ class Drivers(models.Model):
 
     delivery_orders = fields.One2many('stock.picking','partner_id',
                                   'Delivery Orders')
+    delivery_orders_data = fields.One2many('stock.picking', 'partner_id',
+                                      'Delivery Orders')
     vehicle_count = fields.Integer(compute='compute_count')
 
     def get_vehicles(self):
@@ -29,3 +31,6 @@ class Drivers(models.Model):
         for record in self:
             record.vehicle_count = self.env['fleet.vehicle'].search_count(
                 [('driver_id', '=', self.id)])
+
+    def comp_delivery_orders_data(self):
+        self.delivery_orders_data = self.env['stock.picking'].search([('partner_id', '=', self.driver_id.id)])

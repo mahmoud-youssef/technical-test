@@ -7,12 +7,14 @@
     'description': """
         Delivery Fleet Orders Management
     """,
-    'depends': ['sale', 'account', 'point_of_sale'],
+    'depends': ['sale', 'account', 'point_of_sale','fleet','report_xlsx'],
 
     'data': [
         'views/delivery_menu.xml',
         'views/drivers_views.xml',
         'views/vehicle_views.xml',
+        'views/cycle_report.xml',
+        'views/report_fleet_vehicle.xml',
     ],
     'assets': {
         'web.assets_backend': [
